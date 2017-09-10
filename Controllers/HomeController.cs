@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using dotnet_core_test.Models;
 using Stripe;
+using dotnet_core_test.core;
 
 namespace dotnet_core_test.Controllers
 {
@@ -26,10 +27,13 @@ namespace dotnet_core_test.Controllers
             return View();
         }
 
-        public IActionResult Charge(string  stripeEmail, string stripeToken)
+        public IActionResult Charge(string  stripeEmail, string stripeToken, string stripePhone)
         {
             var customers = new StripeCustomerService();
             var charges = new StripeChargeService();
+
+            var Basket = new Basket();
+            Basket.Amount = 1000;
 
             var customer = customers.Create(new StripeCustomerCreateOptions {
               Email = stripeEmail,
@@ -37,7 +41,7 @@ namespace dotnet_core_test.Controllers
             });
 
             var charge = charges.Create(new StripeChargeCreateOptions {
-              Amount = 500,
+              Amount = Basket.Amount,
               Description = "Sample Charge",
               Currency = "usd",
               CustomerId = customer.Id
