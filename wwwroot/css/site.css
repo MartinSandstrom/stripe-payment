@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 100px;
     padding-bottom: 20px;
 }
 
@@ -24,6 +24,18 @@
 /* QR code generator */
 #qrCode {
     margin: 15px;
+}
+
+.card {
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    margin-top: 10px
+}
+
+.card h2 {
+    padding: 8px;
 }
 
 /* Hide/rearrange for smaller screens */
