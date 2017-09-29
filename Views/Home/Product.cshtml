@@ -1,14 +1,25 @@
-<h3>@ViewData["id"]</h3>
 
-<form action="/Home/Charge" method="POST">
-  <article>
-    <label>Amount: $5.00</label>
-  </article>
-  <script src="//checkout.stripe.com/v2/checkout.js"
-          class="stripe-button"
-          data-key="pk_test_NUgbamkfKpGsRX8RCXhVQr2P"
-          data-locale="auto"
-          data-description="Sample Charge"
-          data-amount="500">
-  </script>
-</form>
+<div class="row">
+    <div class="col-sm-6">
+        <h3>@ViewData["id"]</h3>
+        <h2>@Model.Name</h2>
+        <h2>@Model.Description</h2>
+
+        <form action="/Home/Charge" method="POST">
+        <article>
+            <label>Amount: $5.00</label>
+        </article>
+        <script src="//checkout.stripe.com/v2/checkout.js"
+                class="stripe-button"
+                data-key="pk_test_NUgbamkfKpGsRX8RCXhVQr2P"
+                data-locale="auto"
+                data-description="@Model.Name"
+                data-amount="500">
+        </script>
+        </form>
+    </div>
+
+    <div class="col-sm-6">
+        <img src="@Url.Content(Model.ImageUrl)" alt="" class="img-responsive">
+    </div>
+</div>

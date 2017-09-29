@@ -30,11 +30,12 @@ namespace dotnet_core_test.Controllers
             return View();
         }
 
-        public IActionResult Product(int id) 
+        public IActionResult Product(string Id) 
         {
-            ViewData["id"] = id; //or ApplicationModel.Id or whatever
-
-            return View();
+            ViewData["id"] = Id; 
+            var products = GetProducts();
+            var model = products.Find(p => p.Id == Id);
+            return View(model);
         }
 
         public IActionResult Contact()
