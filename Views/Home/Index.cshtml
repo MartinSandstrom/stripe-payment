@@ -3,25 +3,14 @@
 }
 
 <div class="row">
+@foreach (var product in Model)
+{
     <div class="col-sm-4">
         <div class="card">
-        <img src="~/images/seb.gif" alt="" class="img-responsive">
-        <h2>Sebastian!</h2>
-        </div>
-        
-    </div>
-    
-    <div class="col-sm-4">
-        <div class="card">
-        <img src="~/images/seb.gif" alt="" class="img-responsive">
-        <h2>Sebastian!</h2>
+            <img src="@Url.Content(product.ImageUrl)" alt="" class="img-responsive">
+            <h2><a href="/home/product/@product.Id">@product.Name</a></h2>
+            <h4>@product.Description</h4>
         </div>
     </div>
-    
-    <div class="col-sm-4">
-        <div class="card">
-        <img src="~/images/seb.gif" alt="" class="img-responsive">
-        <h2>Sebastian!</h2>
-        </div>
-    </div>
+}
 </div>

@@ -3,19 +3,36 @@ using Microsoft.AspNetCore.Mvc;
 using dotnet_core_test.Models;
 using Stripe;
 using dotnet_core_test.core;
+using System.Collections.Generic;
 
 namespace dotnet_core_test.Controllers
 {
     public class HomeController : Controller
     {
+
+        public List<Product> GetProducts()
+        {
+            return new List<Product>(){
+                new Product("1", "Sebastian", "Köp en vän under havet", "~/images/seb.gif"), 
+                new Product("2", "Pumba", "köp en ko", "~/images/pumba.png"), 
+                new Product("3", "Timon", "köp en surrogat", "~/images/Timon.png")};
+        }
         public IActionResult Index()
         {
-            return View();
+            var ProductModel = GetProducts();
+            return View(ProductModel);
         }
 
         public IActionResult About()
         {
             ViewData["Message"] = "Welcome to this awesome stufzz.";
+
+            return View();
+        }
+
+        public IActionResult Product(int id) 
+        {
+            ViewData["id"] = id; //or ApplicationModel.Id or whatever
 
             return View();
         }
